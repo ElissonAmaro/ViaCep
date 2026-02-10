@@ -103,3 +103,12 @@ src/
 - [Vite](https://vitejs.dev/) - Documentação do Vite
 
 ## Autor: Elisson
+
+## 📷 Capturas de Tela
+
+### Tela Inicial
+<img src="src/assets/inicio.png" alt="Tela Inicial" width="600">
+
+### Resultado da Busca
+<img src="src/assets/resultado.png" alt="Resultado da Busca" width="600">
+

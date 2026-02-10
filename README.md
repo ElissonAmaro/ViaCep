@@ -42,8 +42,7 @@ A aplicação exibe as seguintes informações do endereço:
 1. **Clone o repositório**
 
    ```bash
-   git clone https://github.com/ElissonAmaro/ViaCep-React.git
-   cd ViaCep-React
+ https://github.com/ElissonAmaro/ViaCep.git
    ```
 
 2. **Instale as dependências**

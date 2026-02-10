@@ -30,7 +30,7 @@ A aplicação exibe as seguintes informações do endereço:
 - Cidade
 - Estado
 
-## 🛠️ Instalação e Configuração
+##  Instalação e Configuração
 
 ### Pré-requisitos
 

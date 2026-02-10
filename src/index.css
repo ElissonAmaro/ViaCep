@@ -148,3 +148,33 @@ button:hover {
 
   }
 }
+
+/* Media Queries para dispositivos móveis */
+@media screen and (max-width: 768px) {
+.menu{
+  width: 90%;
+}
+.menu  button {
+  transform: translateX(-20px);
+  color: white;
+ }
+.div_containts{
+    width: 90%;
+}
+.container{
+  align-items: center;
+  justify-content: center;
+
+}
+.div_containts{
+ 
+  
+}
+.results{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+}
+

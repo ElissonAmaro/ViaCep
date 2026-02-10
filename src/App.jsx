@@ -1,32 +1,40 @@
 import {useState } from 'react'
-import api from './assets/services/api'
-import Content from './assets/components/Card'
+import Api from './services/api'
+import Content from './components/Card'
 
 function App() {
 
   const [cep, setCep] = useState([])
-  const [search, setSearc] = useState(``)
+  const [search, setSearch] = useState(``)
   const [encontrado, setEncontrado] = useState(``)
   const [erroConsulta, setErroConsulta] = useState(``)
 
 
   async function buscarCep() {
     if (search !== "") {
-      setSearc("");
+      // Remove todos os caracteres não numéricos (hífen, pontos, espaços, etc.)
+      const cepLimpo = search.replace(/\D/g, '');
+      
+      // Verifica se o CEP tem exatamente 8 dígitos
+      if (cepLimpo.length !== 8) {
+        setErroConsulta(`CEP deve conter exatamente 8 dígitos`)
+        setEncontrado(``)
+        return;
+      }
+
+      setSearch("");
 
       try {
-        const response = await api.get(`${search}/json/`);
+        const response = await Api.get(`${cepLimpo}/json/`);
         setCep(response.data)
         setEncontrado(`Endereço Encontrado`)
         setErroConsulta(``)
       } catch (error) {
-        setErroConsulta(`Endereço nao encontrado`)
+        setErroConsulta(`Endereço não encontrado`)
         setEncontrado(``)
-        
-
       }
     } else {
-      setEncontrado(`CEP Nao foi digitado`)
+      setEncontrado(`CEP não foi digitado`)
     }
   }
   return (
@@ -44,16 +52,16 @@ function App() {
 
         <div className="menu">
           <input
-            type="Number"
+            type="text"
             placeholder="Digite o CEP (ex:01310-100)"
             value={search}
-            onChange={(e) => setSearc(e.target.value)}
-            maxLength={8}
+            onChange={(e) => setSearch(e.target.value)}
+            maxLength={9}
           />
-          <button onClick={buscarCep}>Buscar <i class="fa-solid fa-magnifying-glass"></i></button>
+          <button onClick={buscarCep} disabled={search.length !== 8}>Buscar <i class="buscar fa-solid fa-magnifying-glass"></i></button>
         </div>
 
-        <div id="results">
+        <div className="results">
           <div >
 
             <h3>{encontrado}{erroConsulta}</h3>
